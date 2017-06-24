@@ -4,6 +4,7 @@ Injectable()
 export class Global {
     private _isLoggedIn = false;
     public _token = null;
+    private _uid = '';
     private _username = '';
     private _profileImg = '';
 
@@ -13,6 +14,14 @@ export class Global {
     set isLoggedIn(isLoggedIn:boolean) {
         localStorage.setItem('isLoggedIn', (isLoggedIn) ? 'true': 'false');
         this._isLoggedIn = isLoggedIn;
+    }
+
+    get uid():string {
+        return this._uid;
+    }
+    set uid(uid:string) {
+        localStorage.setItem('uid', uid);
+        this._uid = uid;
     }
 
     get username():string {
