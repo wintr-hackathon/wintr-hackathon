@@ -26,6 +26,7 @@ export class EventDetailComponent {
     runStat: string;
     time: number = 0;
     hour: number;
+    speed: number = 0;
     
     constructor(private router: Router,
                 private modalService: NgbModal,
@@ -71,6 +72,7 @@ export class EventDetailComponent {
             }
             that.time += 1;
             that.hour = Math.floor(that.time/60);
+            if(that.time > 0 ) that.speed = (that.distance*1000)/that.time;
         }
         function showPosition(position) {
             var tempLat = that.lat;
@@ -105,6 +107,7 @@ export class EventDetailComponent {
         let that = this;
         that.runStat = "";
         clearInterval(that.intv);
+        that.speed = 0;
     }
 
 }
