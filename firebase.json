@@ -1,7 +1,16 @@
 {
+  "firebase": "fundrun",
   "hosting": {
     "public": "dist",
     "ignore": [
-    ]
+    ],
+    "rewrites": [{
+      "source": "/public/**",
+      "destination": "/public.html"
+    },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }]
   }
 }
