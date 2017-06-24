@@ -19,6 +19,8 @@ import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFireOfflineModule} from "angularfire2-offline";
 
+import { FacebookModule } from 'ngx-facebook';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,10 @@ import {AngularFireOfflineModule} from "angularfire2-offline";
 
     EventDetailModule,
 
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+
+    // FB
+    FacebookModule.forRoot()
   ],
   providers: [
     Global,
