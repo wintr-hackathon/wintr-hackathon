@@ -13,6 +13,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavigationModule} from "./components/common/navigation/navigation.module";
 import {TopnavbarModule} from "./components/common/topnavbar/topnavbar.module";
 import {EventDetailModule} from "./containers/event-detail/event-detail.module";
+import {AngularFireModule} from "angularfire2";
+import {environment} from "../environments/environment";
+import {AngularFireDatabaseModule} from "angularfire2/database";
+import {AngularFireAuthModule} from "angularfire2/auth";
 
 import { FacebookModule } from 'ngx-facebook';
 
@@ -24,6 +28,10 @@ import { FacebookModule } from 'ngx-facebook';
     // Angular modules
     BrowserModule,
     NgbModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase, 'wintr-hackathon'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+
     // Modules
     LayoutsModule,
     NavigationModule,
