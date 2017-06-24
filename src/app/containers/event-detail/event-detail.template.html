@@ -1,5 +1,22 @@
+<h1>Event Number : {{ eventId }}</h1>
+
+        <!-- this creates a google map on the page with the given lat/lng from -->
+        <!-- the component as the initial center of the map: -->
 <div class="container">
     <div class="row">
-        Event Detail {{ eventId }}
+        <div class="col-12">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="18" [zoomControl]="false">
+                <agm-marker [latitude]="firstLat" [longitude]="firstLng"></agm-marker>
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+
+                
+                <agm-polyline [clickable]="true" [editable]="true" [geodesic]="true" [polylineDraggable]="false" [strokeColor]="000000" [strokeWeight]="1" [visible]="true" [zIndex]="1">
+                    <agm-polyline-point *ngFor="let point of pathPoints;" [latitude]="point.lat" [longitude]="point.lng"></agm-polyline-point>
+                </agm-polyline>
+            </agm-map>  
+        </div>
     </div>
 </div>
+{{ distance | number : '1.2-2' }}
+<button class="default-btn" (click)="startRun()">Start!!!</button>
+<button class="default-btn" (click)="stopRun()">Stop</button>
