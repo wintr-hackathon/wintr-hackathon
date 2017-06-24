@@ -18,9 +18,8 @@ export class EventComponent {
 
     }
 
-    facebookLogout() {
-        this.global.isLoggedIn = false;
-        this.router.navigate(['/login']);
+    openEventDetail(id) {
+        this.router.navigate(['/event/' + id]);
     }
 }
 

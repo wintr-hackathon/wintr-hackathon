@@ -12,6 +12,7 @@ import {EventModule} from "./containers/event/event.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NavigationModule} from "./components/common/navigation/navigation.module";
 import {TopnavbarModule} from "./components/common/topnavbar/topnavbar.module";
+import {EventDetailModule} from "./containers/event-detail/event-detail.module";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import {TopnavbarModule} from "./components/common/topnavbar/topnavbar.module";
     LoginModule,
 
     EventModule,
+
+    EventDetailModule,
 
     RouterModule.forRoot(ROUTES)
   ],
