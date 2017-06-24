@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {Global} from "../../service/global";
+import {AngularFireAuth} from "angularfire2/auth";
 
 declare var jQuery:any;
 
@@ -13,10 +14,12 @@ declare var jQuery:any;
 export class NavigationComponent {
 
     private global: Global;
-    private username: string;
-    private profileImg: string;
+    public username: string;
+    public profileImg: string;
 
-    constructor(private router: Router, private _global: Global) {
+    constructor(private router: Router, private _global: Global,
+        private afAuth: AngularFireAuth
+    ) {
         this.global = _global;
 
         if (!this.global.isLoggedIn) {
@@ -38,7 +41,11 @@ export class NavigationComponent {
     }
 
     logout() {
+        this.afAuth.auth.signOut();
         this.global.isLoggedIn = false;
+        this.global.username = '';
+        this.global.profileImg = '';
+        this.global.uid = '';
         this.router.navigate(['/login']);
         jQuery("#wrapper").toggleClass("toggled");
     }

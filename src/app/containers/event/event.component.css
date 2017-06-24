@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 body {
     padding: 60px 0px;
@@ -45,11 +45,12 @@ body {
     font-weight: 900;
     line-height: 1;
 }
-.event-list > li > img {
+.event-list > li > .cover {
     width: 100%;
 }
 .event-list > li > .info {
     padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
 }
 .event-list > li > .info > .title {
@@ -62,6 +63,19 @@ body {
     font-weight: 300;
     margin: 0px;
 }
+
+.event-list > li > .info > .donate {
+    font-size: 13pt;
+    font-weight: 500;
+    margin: 0px;
+}
+
+.event-list > li > .info > .run-count {
+    font-size: 13pt;
+    font-weight: 500;
+    margin: 0px;
+}
+
 .event-list > li > .info > ul,
 .event-list > li > .social > ul {
     display: table;
@@ -126,21 +140,29 @@ body {
     background-color: rgb(221, 75, 57) !important;
 }
 
+.event-list > li > .info > .donate {
+    padding: 10px 10px 0px 10px;
+}
+
+.event-list > li > .info > .run-count {
+    padding: 10px 10px 0px 10px;
+}
+
 @media (min-width: 768px) {
     .event-list > li {
         position: relative;
         display: block;
         width: 100%;
-        height: 120px;
+        height: 130px;
         padding: 0px;
     }
     .event-list > li > time,
-    .event-list > li > img  {
+    .event-list > li > .cover  {
         display: inline-block;
     }
     .event-list > li > time,
-    .event-list > li > img {
-        width: 120px;
+    .event-list > li > .cover {
+        width: 130px;
         float: left;
     }
     .event-list > li > .info {
@@ -148,15 +170,15 @@ body {
         overflow: hidden;
     }
     .event-list > li > time,
-    .event-list > li > img {
-        width: 120px;
-        height: 120px;
+    .event-list > li > .cover {
+        width: 130px;
+        height: 130px;
         padding: 0px;
         margin: 0px;
     }
     .event-list > li > .info {
         position: relative;
-        height: 120px;
+        height: 130px;
         text-align: left;
         padding-right: 40px;
     }
@@ -164,6 +186,7 @@ body {
     .event-list > li > .info > .desc {
         padding: 0px 10px;
     }
+
     .event-list > li > .info > ul {
         position: absolute;
         left: 0px;
