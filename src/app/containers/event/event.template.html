@@ -14,7 +14,9 @@
                     <div class="info">
                         <h2 class="title">{{ event.name }}</h2>
                         <p class="desc">{{ event.desc }}</p>
-                        <p class="run-count">Challenge:
+                        <p class="donate"><strong>Donation:</strong> {{ event.donate }}</p>
+                        <p class="run-count">
+                            <strong>Challenge:</strong>
                             <span [ngStyle]="{'color': (event.run_count < event.challenge) ? '#FF0000': '#17876b' }">
                                 {{ event.run_count }}
                             </span>

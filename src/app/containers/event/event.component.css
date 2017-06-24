@@ -50,6 +50,7 @@ body {
 }
 .event-list > li > .info {
     padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
 }
 .event-list > li > .info > .title {
@@ -63,8 +64,13 @@ body {
     margin: 0px;
 }
 
+.event-list > li > .info > .donate {
+    font-size: 13pt;
+    font-weight: 500;
+    margin: 0px;
+}
+
 .event-list > li > .info > .run-count {
-    padding-top: 20px;
     font-size: 13pt;
     font-weight: 500;
     margin: 0px;
@@ -134,6 +140,14 @@ body {
     background-color: rgb(221, 75, 57) !important;
 }
 
+.event-list > li > .info > .donate {
+    padding: 10px 10px 0px 10px;
+}
+
+.event-list > li > .info > .run-count {
+    padding: 10px 10px 0px 10px;
+}
+
 @media (min-width: 768px) {
     .event-list > li {
         position: relative;
@@ -171,10 +185,6 @@ body {
     .event-list > li > .info > .title,
     .event-list > li > .info > .desc {
         padding: 0px 10px;
-    }
-
-    .event-list > li > .info > .run-count {
-        padding: 20px 10px 0px 10px;
     }
 
     .event-list > li > .info > ul {
