@@ -17,6 +17,7 @@ import {AngularFireModule} from "angularfire2";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import {AngularFireOfflineModule} from "angularfire2-offline";
 
 import { FacebookModule } from 'ngx-facebook';
 
@@ -29,6 +30,7 @@ import { FacebookModule } from 'ngx-facebook';
     BrowserModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'wintr-hackathon'),
+    AngularFireOfflineModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
 
