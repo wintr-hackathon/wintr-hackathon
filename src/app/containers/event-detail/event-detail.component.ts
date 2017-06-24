@@ -16,15 +16,16 @@ export class EventDetailComponent {
 
     eventId: any;
 
-    firstLat: number
-    firstLng: number
-    tempLat: number
-    tempLng: number
+    firstLat: number;
+    firstLng: number;
     lat: number;
     lng: number;
     pathPoints = [];
     distance: any = 0;
     intv: any;
+    runStat: string;
+    time: number = 0;
+    hour: number;
     
     constructor(private router: Router,
                 private modalService: NgbModal,
@@ -40,6 +41,7 @@ export class EventDetailComponent {
             that.eventId = +params['id'];
         });
         that.firstPosition();
+        that.hour = Math.floor(that.time/60);
     }
 
     firstPosition(){
@@ -57,6 +59,7 @@ export class EventDetailComponent {
         let that = this;
 
         that.firstPosition();
+        that.runStat = "( Running )";
         
         that.intv = setInterval(() => {
             getThisLocation()
@@ -66,14 +69,15 @@ export class EventDetailComponent {
             if (navigator.geolocation) {
                  navigator.geolocation.getCurrentPosition(showPosition);
             }
-            //that.distance += 1;
+            that.time += 1;
+            that.hour = Math.floor(that.time/60);
         }
         function showPosition(position) {
-            that.tempLat = that.lat;
-            that.tempLng = that.lng;
+            var tempLat = that.lat;
+            var tempLng = that.lng;
             that.lat = position.coords.latitude;
             that.lng = position.coords.longitude;
-            that.distance += getDistanceFromLatLonInKm(that.tempLat, that.tempLng, that.lat, that.lng);
+            that.distance += getDistanceFromLatLonInKm(tempLat, tempLng, that.lat, that.lng);
 
             that.pathPoints.push({lat: that.lat, lng: that.lng});
         }
@@ -99,7 +103,8 @@ export class EventDetailComponent {
 
     stopRun(){
         let that = this;
-         clearInterval(that.intv);
+        that.runStat = "";
+        clearInterval(that.intv);
     }
 
 }
