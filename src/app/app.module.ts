@@ -9,6 +9,7 @@ import {LayoutsModule} from "./components/common/layouts/layouts.module";
 import {Global} from "./components/service/global";
 import {AuthGuard} from "./components/service/authguard.service";
 import {EventModule} from "./containers/event/event.module";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {EventModule} from "./containers/event/event.module";
   imports: [
     // Angular modules
     BrowserModule,
+    NgbModule.forRoot(),
 
     // Views
     LoginModule,

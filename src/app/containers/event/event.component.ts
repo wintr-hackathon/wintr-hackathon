@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
     selector: 'event',
@@ -9,7 +10,10 @@ import {Router} from '@angular/router';
 })
 export class EventComponent {
 
-    constructor(private router: Router) {
+    model = 1;
+    
+    constructor(private router: Router,
+                private modalService: NgbModal) {
 
     }
 }
