@@ -1,5 +1,4 @@
 {
-  "firebase": "fundrun",
   "hosting": {
     "public": "dist",
     "ignore": [

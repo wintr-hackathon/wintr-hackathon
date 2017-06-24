@@ -10,6 +10,8 @@ import {Global} from "./components/service/global";
 import {AuthGuard} from "./components/service/authguard.service";
 import {EventModule} from "./containers/event/event.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NavigationModule} from "./components/common/navigation/navigation.module";
+import {TopnavbarModule} from "./components/common/topnavbar/topnavbar.module";
 
 @NgModule({
   declarations: [
@@ -19,14 +21,15 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     // Angular modules
     BrowserModule,
     NgbModule.forRoot(),
+    // Modules
+    LayoutsModule,
+    NavigationModule,
+    TopnavbarModule,
 
     // Views
     LoginModule,
 
     EventModule,
-
-    // Modules
-    LayoutsModule,
 
     RouterModule.forRoot(ROUTES)
   ],

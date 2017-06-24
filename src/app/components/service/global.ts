@@ -4,6 +4,8 @@ Injectable()
 export class Global {
     private _isLoggedIn = false;
     public _token = null;
+    private _username = '';
+    private _profileImg = '';
 
     get isLoggedIn():boolean {
         return this._isLoggedIn;
@@ -13,7 +15,25 @@ export class Global {
         this._isLoggedIn = isLoggedIn;
     }
 
+    get username():string {
+        return this._username;
+    }
+    set username(username:string) {
+        localStorage.setItem('username', username);
+        this._username = username;
+    }
+
+    get profileImg():string {
+        return this._profileImg;
+    }
+    set profileImg(profileImg:string) {
+        localStorage.setItem('profileImg', profileImg);
+        this._profileImg = profileImg;
+    }
+
     constructor() {
         this._isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        this._username = localStorage.getItem('username');
+        this._profileImg = localStorage.getItem('profileImg');
     }
 }
