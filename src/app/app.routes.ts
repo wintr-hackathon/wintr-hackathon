@@ -5,6 +5,7 @@ import {BlankComponent} from "./components/common/layouts/blank.component";
 import {EventComponent} from "./containers/event/event.component";
 import {EventDetailComponent} from "./containers/event-detail/event-detail.component";
 import {AuthGuard} from "./components/service/authguard.service";
+import {MyEventComponent} from "./containers/myevent/myevent.component";
 
 
 export const ROUTES:Routes = [
@@ -18,6 +19,7 @@ export const ROUTES:Routes = [
         path: '', component: BasicComponent,
         children: [
             {path: 'event', component: EventComponent, canActivate: [AuthGuard]},
+            {path: 'myevent', component: MyEventComponent, canActivate: [AuthGuard]},
             {path: 'event/:id', component: EventDetailComponent, canActivate: [AuthGuard]},
         ]
     },

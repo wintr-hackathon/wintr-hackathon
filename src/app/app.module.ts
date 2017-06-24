@@ -18,6 +18,7 @@ import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFireOfflineModule} from "angularfire2-offline";
+import {MyEventModule} from "./containers/myevent/myevent.module";
 
 @NgModule({
   declarations: [
@@ -39,10 +40,9 @@ import {AngularFireOfflineModule} from "angularfire2-offline";
 
     // Views
     LoginModule,
-
     EventModule,
-
     EventDetailModule,
+    MyEventModule,
 
     RouterModule.forRoot(ROUTES)
   ],
