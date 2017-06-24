@@ -1,6 +1,12 @@
-import {Component, ViewChild, ViewEncapsulation} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
 
-import {FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent} from 'ngx-facebook';
+// Do not import from 'firebase' as you'd lose the tree shaking benefits
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-root',
@@ -9,124 +15,23 @@ import {FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVi
     './app.component.css',
   ],
 })
+
 export class AppComponent {
   title = 'FundRun';
-  @ViewChild(FBVideoComponent) video: FBVideoComponent;
 
-  constructor(
-    private fb: FacebookService
-  ) {
-
-    console.log('Initializing Facebook');
-
-    fb.init({
-      appId: '1927971220769787',
-      version: 'v2.9'
-    });
-
+  user: Observable<firebase.User>;
+  items: FirebaseListObservable<any[]>;
+  afAuth;
+  constructor(afAuth: AngularFireAuth) {
+    this.afAuth = afAuth;
+    this.user = afAuth.authState;
   }
 
-  /**
-   * Login with minimal permissions. This allows you to see their public profile only.
-   */
   login() {
-    this.fb.login()
-      .then((res: LoginResponse) => {
-        console.log('Logged in', res);
-      })
-      .catch(this.handleError);
+    this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
   }
 
-  /**
-   * Login with additional permissions/options
-   */
-  loginWithOptions() {
-
-    const loginOptions: LoginOptions = {
-      enable_profile_selector: true,
-      return_scopes: true,
-      scope: 'public_profile,user_friends,email,pages_show_list'
-    };
-
-    this.fb.login(loginOptions)
-      .then((res: LoginResponse) => {
-        console.log('Logged in', res);
-      })
-      .catch(this.handleError);
-
+  logout() {
+    this.afAuth.auth.signOut();
   }
-
-  getLoginStatus() {
-    this.fb.getLoginStatus()
-      .then(console.log.bind(console))
-      .catch(console.error.bind(console));
-  }
-
-
-  /**
-   * Get the user's profile
-   */
-  getProfile() {
-    this.fb.api('/me')
-      .then((res: any) => {
-        console.log('Got the users profile', res);
-      })
-      .catch(this.handleError);
-  }
-
-
-  /**
-   * Get the users friends
-   */
-  getFriends() {
-    this.fb.api('/me/friends')
-      .then((res: any) => {
-        console.log('Got the users friends', res);
-      })
-      .catch(this.handleError);
-  }
-
-
-  /**
-   * Show the share dialog
-   */
-  share() {
-
-    const options: UIParams = {
-      method: 'share',
-      href: 'https://github.com/zyramedia/ng2-facebook-sdk'
-    };
-
-    this.fb.ui(options)
-      .then((res: UIResponse) => {
-        console.log('Got the users profile', res);
-      })
-      .catch(this.handleError);
-
-  }
-
-
-  playVideo() {
-    this.video.play();
-  }
-
-  onVideoEvent(ev) {
-    console.log('Video event fired: ' + ev);
-  }
-
-  pauseVideo() {
-    this.video.pause();
-  }
-
-
-
-  /**
-   * This is a convenience method for the sake of this example project.
-   * Do not use this in production, it's better to handle errors separately.
-   * @param error
-   */
-  private handleError(error) {
-    console.error('Error processing action', error);
-  }
-
 }
