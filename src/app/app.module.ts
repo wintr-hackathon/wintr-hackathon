@@ -11,6 +11,8 @@ import {AuthGuard} from "./components/service/authguard.service";
 import {EventModule} from "./containers/event/event.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
+import { FacebookModule } from 'ngx-facebook';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     // Modules
     LayoutsModule,
 
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+
+    // FB
+    FacebookModule.forRoot()
   ],
   providers: [
     Global,
