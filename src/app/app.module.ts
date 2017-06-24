@@ -10,17 +10,17 @@ import {Global} from "./components/service/global";
 import {AuthGuard} from "./components/service/authguard.service";
 import {EventModule} from "./containers/event/event.module";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {Ng2Webstorage} from "ngx-webstorage";
 
 @NgModule({
   declarations: [
     AppComponent,
-
-
   ],
   imports: [
     // Angular modules
     BrowserModule,
     NgbModule.forRoot(),
+    Ng2Webstorage,
 
     // Views
     LoginModule,

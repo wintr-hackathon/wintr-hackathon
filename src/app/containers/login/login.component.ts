@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {Global} from "../../components/service/global";
 
 @Component({
     selector: 'login',
@@ -9,8 +10,16 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
 
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private global: Global
+    ) {
 
+    }
+
+    login() {
+        this.global.isLoggedIn = true;
+        this.router.navigate(['/event']);
     }
 }
 

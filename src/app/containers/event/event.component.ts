@@ -10,8 +10,6 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class EventComponent {
 
-    model = 1;
-    
     constructor(private router: Router,
                 private modalService: NgbModal) {
 
