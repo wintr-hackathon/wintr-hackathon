@@ -9,11 +9,18 @@
                         <span class="year">{{ event.date | date: 'yyyy' }}</span>
                         <span class="time">ALL DAY</span>
                     </time>
-                    <img alt="Independence Day" [src]="event.cover" class="cover" />
+                    <img [alt]="event.name" [src]="event.cover" class="cover" />
                     <!--<div class="cover" style="background-size: cover;" [ngStyle]="{'background-image': 'url(' + event.cover +')'}"></div>-->
                     <div class="info">
                         <h2 class="title">{{ event.name }}</h2>
                         <p class="desc">{{ event.desc }}</p>
+                        <p class="run-count">Challenge:
+                            <span [ngStyle]="{'color': (event.run_count < event.challenge) ? '#FF0000': '#17876b' }">
+                                {{ event.run_count }}
+                            </span>
+                            /
+                            <span style="color: #17876b;">{{ event.challenge }}</span>
+                        </p>
                     </div>
                     <div class="social">
                         <ul>

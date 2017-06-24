@@ -13,8 +13,8 @@ declare var jQuery:any;
 export class NavigationComponent {
 
     private global: Global;
-    private username: string;
-    private profileImg: string;
+    public username: string;
+    public profileImg: string;
 
     constructor(private router: Router, private _global: Global) {
         this.global = _global;
