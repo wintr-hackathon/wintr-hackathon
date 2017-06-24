@@ -4,9 +4,7 @@ import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Global} from "../../components/service/global";
 import { GoogleMapsAPIWrapper, PolylineManager } from "@agm/core";
 
-
 @Component({
-    
     selector: 'event-detail',
     templateUrl: 'event-detail.template.html',
     styleUrls: ['event-detail.component.css'],
@@ -22,7 +20,8 @@ export class EventDetailComponent {
     lng: number;
     pathPoints = [];
     distance: any = 0;
-    intv: any;
+    runIntv: any;
+    noRunIntv: any;
     runStat: string;
     time: number = 0;
     hour: number;
@@ -41,11 +40,13 @@ export class EventDetailComponent {
         this.route.params.subscribe(params => {
             that.eventId = +params['id'];
         });
-        that.firstPosition();
+        that.noRunIntv = setInterval(() => {
+            that.getPosition()
+            }, 1000);
         that.hour = Math.floor(that.time/60);
     }
 
-    firstPosition(){
+    getPosition(){
         let that = this;
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showFirstPosition);
@@ -58,15 +59,15 @@ export class EventDetailComponent {
 
     startRun(){
         let that = this;
-
-        that.firstPosition();
         that.runStat = "( Running )";
+        clearInterval(that.noRunIntv);
         
-        that.intv = setInterval(() => {
-            getThisLocation()
+        that.getPosition();
+        that.runIntv = setInterval(() => {
+            getRunPosition()
             }, 1000);
         
-        function getThisLocation(){
+        function getRunPosition(){
             if (navigator.geolocation) {
                  navigator.geolocation.getCurrentPosition(showPosition);
             }
@@ -74,6 +75,7 @@ export class EventDetailComponent {
             that.hour = Math.floor(that.time/60);
             if(that.time > 0 ) that.speed = (that.distance*1000)/that.time;
         }
+
         function showPosition(position) {
             var tempLat = that.lat;
             var tempLng = that.lng;
@@ -106,10 +108,13 @@ export class EventDetailComponent {
     stopRun(){
         let that = this;
         that.runStat = "";
-        clearInterval(that.intv);
         that.speed = 0;
-    }
 
+        clearInterval(that.runIntv);
+        that.noRunIntv = setInterval(() => {
+            that.getPosition()
+        }, 1000);
+    }
 }
 
 //

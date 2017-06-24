@@ -6,7 +6,7 @@
                 <agm-marker [latitude]="firstLat" [longitude]="firstLng"></agm-marker>
                 <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
 
-                <agm-polyline [clickable]="true" [editable]="true" [geodesic]="true" [polylineDraggable]="false" [strokeColor]="000000" [strokeWeight]="1" [visible]="true" [zIndex]="1">
+                <agm-polyline [clickable]="true" [editable]="true" [geodesic]="true" [polylineDraggable]="false" [strokeColor]="000000" [strokeWeight]="5" [visible]="true" [zIndex]="1">
                     <agm-polyline-point *ngFor="let point of pathPoints;" [latitude]="point.lat" [longitude]="point.lng"></agm-polyline-point>
                 </agm-polyline>
             </agm-map>  
@@ -22,7 +22,7 @@
         </div>
         <div class="col-12">
             <button class="btn btn-primary" (click)="startRun()" (click)="show = !show" *ngIf="!show">START</button>
-            <button class="btn btn-warning" (click)="stopRun()" (click)="show = !show" *ngIf="show">STOP</button>
+            <button class="btn btn-danger" (click)="stopRun()" (click)="show = !show" *ngIf="show">STOP</button>
         </div>
     </div>
 </div>
