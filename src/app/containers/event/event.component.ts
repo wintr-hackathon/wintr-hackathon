@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Global} from "../../components/service/global";
 import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
+import {AfoListObservable, AngularFireOfflineDatabase} from "angularfire2-offline";
 
 @Component({
     selector: 'event',
@@ -12,12 +13,12 @@ import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database
 })
 export class EventComponent {
 
-    events: FirebaseListObservable<any[]>;
+    events: AfoListObservable<any[]>;
 
     constructor(private router: Router,
                 private modalService: NgbModal,
                 private global: Global,
-                db: AngularFireDatabase
+                db: AngularFireOfflineDatabase
     ) {
         this.events = db.list('/events');
     }

@@ -17,6 +17,7 @@ import {AngularFireModule} from "angularfire2";
 import {environment} from "../environments/environment";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import {AngularFireOfflineModule} from "angularfire2-offline";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {AngularFireAuthModule} from "angularfire2/auth";
     BrowserModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase, 'wintr-hackathon'),
+    AngularFireOfflineModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
 
