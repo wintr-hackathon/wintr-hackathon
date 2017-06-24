@@ -17,7 +17,7 @@ export class LoginComponent {
 
     }
 
-    login() {
+    facebookLogin() {
         this.global.isLoggedIn = true;
         this.router.navigate(['/event']);
     }
