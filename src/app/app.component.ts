@@ -5,9 +5,7 @@ import {FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVi
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: [
-    '../../node_modules/bootstrap/dist/css/bootstrap.css',
     './app.component.css',
   ],
 })
