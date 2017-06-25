@@ -47,7 +47,7 @@ export class LoginComponent {
     }
 
     facebookLogin() {
-        this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+        this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
     }
 
     public ngOnDestroy(): void {
