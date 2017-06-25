@@ -1,23 +1,21 @@
-<div class="container div-login" style="height: 100vh;">
-  <div class="row">
-    <!-- <div class="col-12"> -->
-    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 30px;">
-      <img src="/assets/bg.png" />
+<div class="topper">
+<div class="container" id="wrapper">
+  <div class="row middle-box text-center fadeInDown" id="content" style="bottom: 0px;">
+  <!--<div class="middle-box text-center loginscreen animated fadeInDown" style="margin-top: 50px;">-->
+    <div class="col-xs-12 col-lg-5">
+        <div class="col-12">
+          <img src="../assets/loginPic2.png" style="width: 75%"> 
+        </div>
+    
+        <div class="col-12" style="padding-top: 20px;">
+          <button class="btn-login btn-login--facebook" type="button" (click)="facebookLogin()">
+            Login with Facebook
+          </button>
+        </div>
     </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-6 middle-box text-center loginscreen animated fadeInDown" style="padding: 30px;">
-      <button class="btn-login btn-login--facebook" type="button" (click)="facebookLogin()">
-        Login with Facebook
-      </button>
+    <div class="col-xs-12 col-lg-7" style="padding-top: 20px">
+      <img src="../assets/loginPic1.png" style="width: 65%">
     </div>
-
-    <div class="col-sm-12 col-md-6 col-lg-6" style="padding: 30px;">
-      <img src="/assets/logo.png" />
-    </div>
-    <!-- </div> -->
   </div>
 </div>
-
-<script>
-  console.log('login');
-</script>
+</div>

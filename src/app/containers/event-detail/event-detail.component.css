@@ -2,7 +2,7 @@ agm-map {
   height: 300px;
 }
 h1{
-  color: #17876b;
+  color: #0072bc;
 }
 .dist, .time, .speed{
   font-weight: 700;
@@ -10,4 +10,11 @@ h1{
 }
 .icon-img{
   width: 30px;
+}
+.start-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: block;
+  width: 130px;
+  margin: 10px auto 0px auto;
 }
