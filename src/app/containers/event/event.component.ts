@@ -18,9 +18,9 @@ export class EventComponent {
     constructor(private router: Router,
                 private modalService: NgbModal,
                 private global: Global,
-                db: AngularFireOfflineDatabase
+                private db: AngularFireOfflineDatabase
     ) {
-        this.events = db.list('/events');
+        this.events = this.db.list('/events');
     }
 
     openEventDetail(id) {

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <h1>Event Number : {{ eventId }}</h1>
+        <h1>{{ (event | async)?.name }}</h1>
         <div class="col-12">
             <agm-map [latitude]="lat" [longitude]="lng" [zoom]="18" [zoomControl]="false">
                 <agm-marker [latitude]="firstLat" [longitude]="firstLng"></agm-marker>
