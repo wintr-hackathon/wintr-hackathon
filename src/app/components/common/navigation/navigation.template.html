@@ -7,10 +7,10 @@
         </a>
     </li>
     <li>
-        <a (click)="openEvent()" [ngClass]="{active: activeRoute('event')}">Challenges</a>
+        <a (click)="openEvent()" [ngClass]="{active: activeRoute('/event')}">Challenges</a>
     </li>
     <li>
-        <a href="#">My Run</a>
+        <a (click)="openMyEvent()" [ngClass]="{active: activeRoute('/myevent')}">My Run</a>
     </li>
     <li>
         <a (click)="logout()">Logout</a>

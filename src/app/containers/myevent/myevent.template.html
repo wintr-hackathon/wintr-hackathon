@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <ul class="event-list" style="padding-top: 20px;">
-                <li (click)="openEventDetail(event.id)" *ngFor="let event of events | async">
+                <li (click)="openEventDetail(event.id)" *ngFor="let event of myEvents | async">
                     <time datetime="2014-07-20">
                         <span class="day">{{ event.date | date: 'd' }}</span>
                         <span class="month">{{ event.date | date: 'MMM' }}</span>
@@ -23,6 +23,7 @@
                             /
                             <span style="color: #17876b;">{{ event.challenge }}</span>
                             km
+                            (My Run: {{ myRunCount[event.id] | number : '1.2-2' }} km)
                         </p>
                     </div>
                     <div class="social">

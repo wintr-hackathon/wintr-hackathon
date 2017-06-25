@@ -40,6 +40,11 @@ export class NavigationComponent {
         jQuery("#wrapper").toggleClass("toggled");
     }
 
+    openMyEvent() {
+        this.router.navigate(['/myevent']);
+        jQuery("#wrapper").toggleClass("toggled");
+    }
+
     logout() {
         this.afAuth.auth.signOut();
         this.global.isLoggedIn = false;
