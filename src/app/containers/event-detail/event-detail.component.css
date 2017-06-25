@@ -1,3 +1,13 @@
 agm-map {
   height: 300px;
 }
+h1{
+  color: #17876b;
+}
+.dist, .time, .speed{
+  font-weight: 700;
+  font-size: 20px;
+}
+.icon-img{
+  width: 30px;
+}

@@ -38,11 +38,12 @@ body {
     font-size: 56pt;
     font-weight: 100;
     line-height: 1;
+    font-weight: bold;
 }
 .event-list > li time > .month {
+    margin-top: 10px;
     display: block;
     font-size: 24pt;
-    font-weight: 900;
     line-height: 1;
 }
 .event-list > li > .cover {
@@ -57,10 +58,11 @@ body {
     font-size: 17pt;
     font-weight: 700;
     margin: 0px;
+    color: #17876b;
 }
 .event-list > li > .info > .desc {
     font-size: 13pt;
-    font-weight: 300;
+    font-weight: 900;
     margin: 0px;
 }
 
@@ -211,4 +213,7 @@ body {
         width: 40px;
         padding: 10px 0px 9px;
     }
+}
+.text-complete{
+    color: #17876b;
 }
