@@ -114,8 +114,12 @@ export class EventDetailComponent {
             that.runSpeed = ( that.runSpeed * 18 ) / 5;
             console.log(that.runSpeed);
 
-            that.runPace = 1/ (that.runSpeed/60);
-            
+            if(that.runSpeed/60 > 0){
+                that.runPace = 1/ (that.runSpeed/60);
+            }else{
+                that.runPace = 0;
+            }
+
             //Notification
             if(Math.floor(that.distance)-Math.floor(that.tempDistance) > 0){
                 Notification.requestPermission().then(function(result){
