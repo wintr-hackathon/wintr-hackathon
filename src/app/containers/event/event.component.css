@@ -59,6 +59,8 @@ body {
     font-weight: 700;
     margin: 0px;
     color: #17876b;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .event-list > li > .info > .desc {
     font-size: 13pt;

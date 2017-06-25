@@ -1,0 +1,15 @@
+.bg-faded {
+    background-color: #0072bc;
+}
+
+.navbar-light .navbar-brand, .navbar-light .navbar-toggler {
+    color: rgba(255, 255, 255, 1);
+}
+
+.navbar-inverse .navbar-toggler {
+    border: none;
+}
+
+#wrapper.toggled navigation {
+    background-color: #262626;
+}
