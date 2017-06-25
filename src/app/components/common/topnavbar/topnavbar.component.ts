@@ -18,6 +18,10 @@ export class TopnavbarComponent {
 
     }
 
+    activeRoute(routename: string): boolean {
+        return this.router.url.indexOf(routename) > -1;
+    }
+
     toggleNavigation(): void {
         jQuery("#wrapper").toggleClass("toggled");
     }

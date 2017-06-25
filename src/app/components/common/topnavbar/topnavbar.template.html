@@ -1,8 +1,14 @@
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-faded">
     <button class="navbar-toggler navbar-toggler-left" style="display: block !important;" (click)="toggleNavigation()">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse" style="padding-left: 70px;">
-        <div class="navbar-brand">Fund Run</div>
+        <div class="navbar-brand">
+            <span *ngIf="activeRoute('/event')">
+                <img src="/assets/icons/fr_logo.png" style="width: 32px; height: 24px; margin-right: 5px;">
+                Challenges
+            </span>
+            <span *ngIf="activeRoute('/myevent')"><span class="fa fa-star"></span> My Run</span>
+        </div>
     </div>
 </nav>
