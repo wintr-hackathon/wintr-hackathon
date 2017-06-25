@@ -35,7 +35,7 @@ export class EventDetailComponent {
     uid = '';
     show = false;
     distanceSlots: any = [];
-    distanceMaxSlot: number = 10;
+    distanceMaxSlot: number = 3;
     distanceIndex: number = 0;
     runSpeed: any = 0;
     runPace: any = 0;
@@ -96,7 +96,7 @@ export class EventDetailComponent {
         that.getPosition();
         that.runIntv = setInterval(() => {
             getRunPosition()
-            }, 1000);
+            }, 3000);
         
         function getRunPosition(){
             if (navigator.geolocation) {
@@ -122,6 +122,7 @@ export class EventDetailComponent {
 
             //Notification
             if(Math.floor(that.distance)-Math.floor(that.tempDistance) > 0){
+                try{
                 Notification.requestPermission().then(function(result){
                     if (result === 'denied') {
                         console.log('Permission wasn\'t granted. Allow a retry.');
@@ -135,6 +136,9 @@ export class EventDetailComponent {
                         } );
                     }
                 });
+                }catch(e){
+                    console.log(e);
+                }
             }
 
             that.tempDistance = that.distance;
@@ -186,6 +190,7 @@ export class EventDetailComponent {
         }
 
         //Notification
+        try{
         Notification.requestPermission().then(function(result){
             if (result === 'denied') {
                 console.log('Permission wasn\'t granted. Allow a retry.');
@@ -199,6 +204,9 @@ export class EventDetailComponent {
                 });
             }
         });
+        }catch(e){
+            console.log(e);
+        }
     }
 
     stopRun(){
@@ -209,7 +217,7 @@ export class EventDetailComponent {
         clearInterval(that.runIntv);
         that.noRunIntv = setInterval(() => {
             that.getPosition()
-        }, 1000);
+        }, 3000);
     }
 
     ngOnDestroy() {
