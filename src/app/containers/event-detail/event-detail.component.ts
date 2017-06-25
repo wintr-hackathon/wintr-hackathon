@@ -26,7 +26,6 @@ export class EventDetailComponent {
     tempDistance: any= 0;
     runIntv: any;
     noRunIntv: any;
-    timeIntv: any;
     runStat: string;
     time: number = 0;
     hour: number;
@@ -71,7 +70,7 @@ export class EventDetailComponent {
 
         that.noRunIntv = setInterval(() => {
             that.getPosition()
-        }, 1000);
+            }, 1000);
         that.hour = Math.floor(that.time/60);
         for(var i=0; i < that.distanceMaxSlot; i++){
             that.distanceSlots[i] = 0;
@@ -97,16 +96,14 @@ export class EventDetailComponent {
         that.getPosition();
         that.runIntv = setInterval(() => {
             getRunPosition()
-        }, 3000);
+            }, 3000);
         
-        that.timeIntv = setInterval(() => {
-            timeInterval()
-        }, 1000);
-
         function getRunPosition(){
             if (navigator.geolocation) {
                  navigator.geolocation.getCurrentPosition(updatePosition);
             }
+            that.time += 1;
+            that.hour = Math.floor(that.time/60);
             //if(that.time > 0 ) that.speed = (that.distance*1000)/that.time;
             
             that.runSpeed = 0;
@@ -145,11 +142,6 @@ export class EventDetailComponent {
             }
 
             that.tempDistance = that.distance;
-        }
-
-        function timeInterval(){
-            that.time += 1;
-            that.hour = Math.floor(that.time/60);
         }
 
         function updatePosition(position) {
@@ -223,7 +215,6 @@ export class EventDetailComponent {
         that.runSpeed = 0;
 
         clearInterval(that.runIntv);
-        clearInterval(that.timeIntv);
         that.noRunIntv = setInterval(() => {
             that.getPosition()
         }, 3000);
@@ -232,7 +223,6 @@ export class EventDetailComponent {
     ngOnDestroy() {
         clearInterval(this.runIntv);
         clearInterval(this.noRunIntv);
-        clearInterval(this.timeIntv);
         this.subMyEvent.unsubscribe();
     }
 }
