@@ -23,17 +23,21 @@ export class EventDetailComponent {
     lng: number;
     pathPoints = [];
     distance: any = 0;
+    tempDistance: any= 0;
     runIntv: any;
     noRunIntv: any;
     runStat: string;
     time: number = 0;
     hour: number;
-    speed: number = 0;
     event: AfoObjectObservable<any>;
     myEvent: AfoObjectObservable<any>;
     subMyEvent: any;
     uid = '';
     show = false;
+    distanceSlots: any = [];
+    distanceMaxSlot: number = 10;
+    distanceIndex: number = 0;
+    runSpeed: any = 0;
 
     constructor(private router: Router,
                 private modalService: NgbModal,
@@ -67,6 +71,9 @@ export class EventDetailComponent {
             that.getPosition()
             }, 1000);
         that.hour = Math.floor(that.time/60);
+        for(var i=0; i < that.distanceMaxSlot; i++){
+            that.distanceSlots[i] = 0;
+        }
     }
 
     getPosition(){
@@ -96,20 +103,55 @@ export class EventDetailComponent {
             }
             that.time += 1;
             that.hour = Math.floor(that.time/60);
-            if(that.time > 0 ) that.speed = (that.distance*1000)/that.time;
+            //if(that.time > 0 ) that.speed = (that.distance*1000)/that.time;
+            
+            that.runSpeed = 0;
+            for(var i=0; i<that.distanceMaxSlot; i++){
+                that.runSpeed += that.distanceSlots[i];
+            }
+            that.runSpeed = ( that.runSpeed * 1000 ) / that.distanceMaxSlot;
+            that.runSpeed = ( that.runSpeed * 18 ) / 5;
+            console.log(that.runSpeed);
+            
+            //Notification
+            if(Math.floor(that.distance)-Math.floor(that.tempDistance) > 0){
+                Notification.requestPermission().then(function(result){
+                    if (result === 'denied') {
+                        console.log('Permission wasn\'t granted. Allow a retry.');
+                        return;
+                    }else if (result === 'default') {
+                        console.log('The permission request was dismissed.');
+                        return;
+                    }else{
+                        var e = new Notification('Your total distance is ' + Math.floor(that.distance) +' km!',{
+                            icon : '../../../../assets/notificatio_icon.png'
+                        } );
+                    }
+                });
+            }
+
+            that.tempDistance = that.distance;
         }
 
         function updatePosition(position) {
-            var tempLat = that.lat;
-            var tempLng = that.lng;
-            that.lat = position.coords.latitude;
-            that.lng = position.coords.longitude;
-            let newDistance = getDistanceFromLatLonInKm(tempLat, tempLng, that.lat, that.lng);
-            that.distance += getDistanceFromLatLonInKm(tempLat, tempLng, that.lat, that.lng);
+            var tempLat;
+            var tempLng;
+            let newDistance = getDistanceFromLatLonInKm(that.lat, that.lng, position.coords.latitude, position.coords.longitude);
+            // that.distance += getDistanceFromLatLonInKm(tempLat, tempLng, that.lat, that.lng);
 
             that.pathPoints.push({lat: that.lat, lng: that.lng});
 
             if(newDistance < 0.01) {
+                tempLat = that.lat;
+                tempLng = that.lng;
+                that.lat = position.coords.latitude;
+                that.lng = position.coords.longitude;
+                that.distance += newDistance;
+                that.distanceSlots[that.distanceIndex] = newDistance;
+                that.distanceIndex = ( that.distanceIndex + 1 ) % that.distanceMaxSlot;
+                // console.log(tempLng);
+                // console.log(tempLat);
+
                 const eventRunCountRef = that.fb.database().ref(`/events/${that.eventId}/run_count`);
                 eventRunCountRef.transaction(run_count => (run_count || 0) + newDistance);
 
@@ -135,12 +177,27 @@ export class EventDetailComponent {
         function deg2rad(deg) {
             return deg * (Math.PI/180)
         }
+
+        //Notification
+        Notification.requestPermission().then(function(result){
+            if (result === 'denied') {
+                console.log('Permission wasn\'t granted. Allow a retry.');
+                return;
+            }else if (result === 'default') {
+                console.log('The permission request was dismissed.');
+                return;
+            }else{
+                var e = new Notification('You are start running!',{
+                    icon : '../../../../assets/notificatio_icon.png'
+                });
+            }
+        });
     }
 
     stopRun(){
         let that = this;
         that.runStat = "";
-        that.speed = 0;
+        that.runSpeed = 0;
 
         clearInterval(that.runIntv);
         that.noRunIntv = setInterval(() => {

@@ -18,7 +18,7 @@
             <p>Time : {{ ( '00' + hour ).slice(-2) }}:{{ ( '00' + time%60 ).slice(-2) }}</p>
         </div>
         <div class="col-12">
-            <p>Speed : {{ speed | number : '1.2-2' }} m/s</p>
+            <p>Speed : {{ runSpeed | number : '1.3-3' }} km/hr</p>
         </div>
         <div class="col-12">
             <button class="btn btn-primary" (click)="startRun()" (click)="show = !show" *ngIf="!show">START</button>
