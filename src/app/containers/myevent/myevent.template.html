@@ -4,10 +4,13 @@
             <ul class="event-list" style="padding-top: 20px;">
                 <li (click)="openEventDetail(event.id)" *ngFor="let event of myEvents | async">
                     <time datetime="2014-07-20">
-                        <span class="day">{{ event.date | date: 'd' }}</span>
+                        <!--<span class="day">{{ event.date | date: 'd' }}</span>
                         <span class="month">{{ event.date | date: 'MMM' }}</span>
                         <span class="year">{{ event.date | date: 'yyyy' }}</span>
-                        <span class="time">ALL DAY</span>
+                        <span class="time">ALL DAY</span>-->
+                        <span class="month">Event</span>
+                        <span class="day">{{ event.id+1 }}</span>
+    
                     </time>
                     <img [alt]="event.name" [src]="event.cover" class="cover" />
                     <!--<div class="cover" style="background-size: cover;" [ngStyle]="{'background-image': 'url(' + event.cover +')'}"></div>-->
@@ -23,7 +26,10 @@
                             /
                             <span style="color: #17876b;">{{ event.challenge }}</span>
                             km
-                            <span style="color: #3333FF;">(My Run: {{ myRunCount[event.id] | number : '1.2-2' }} km)</span>
+                        </p>
+                        <p class="run-count">
+                            <strong>My Run:</strong>
+                            <span style="color: #3333FF;">{{ myRunCount[event.id] | number : '1.2-2' }}</span> km
                         </p>
                     </div>
                     <div class="social">
