@@ -38,6 +38,7 @@ export class EventDetailComponent {
     distanceMaxSlot: number = 10;
     distanceIndex: number = 0;
     runSpeed: any = 0;
+    runPace: any = 0;
 
     constructor(private router: Router,
                 private modalService: NgbModal,
@@ -112,6 +113,8 @@ export class EventDetailComponent {
             that.runSpeed = ( that.runSpeed * 1000 ) / that.distanceMaxSlot;
             that.runSpeed = ( that.runSpeed * 18 ) / 5;
             console.log(that.runSpeed);
+
+            that.runPace = 1/ (that.runSpeed/60);
             
             //Notification
             if(Math.floor(that.distance)-Math.floor(that.tempDistance) > 0){
