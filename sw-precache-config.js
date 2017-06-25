@@ -1,5 +1,6 @@
 module.exports = {
     navigateFallback: '/index.html',
+    navigateFallbackWhitelist: [ /^\/[^\_]+\/?/ ],
     stripPrefix: 'dist',
     root: 'dist/',
     staticFileGlobs: [
