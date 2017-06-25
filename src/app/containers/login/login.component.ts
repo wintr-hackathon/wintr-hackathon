@@ -23,6 +23,11 @@ export class LoginComponent {
     ) {
         this.user = afAuth.authState;
 
+        // this.global.isLoggedIn = true;
+        // this.global.username = "Ratchasak Ranron";
+        // this.global.profileImg = "";
+        // this.global.uid = "Udf6JPOAeKPpmzwlk0DZK0DCW9V2";
+        // this.router.navigate(['/event']);
         this.subUser = this.user.subscribe(
             user => {
                 if (user === null) {
@@ -45,7 +50,7 @@ export class LoginComponent {
         this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
     }
 
-    public OnDestroy(): void {
+    public ngOnDestroy(): void {
         this.subUser.unsubscribe();
     }
 }

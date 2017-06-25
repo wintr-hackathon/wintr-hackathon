@@ -44,5 +44,6 @@ export class Global {
         this._isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         this._username = localStorage.getItem('username');
         this._profileImg = localStorage.getItem('profileImg');
+        this._uid = localStorage.getItem('uid');
     }
 }

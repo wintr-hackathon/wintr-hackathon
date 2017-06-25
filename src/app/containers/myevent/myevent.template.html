@@ -18,12 +18,12 @@
                         <p class="run-count">
                             <strong>Challenge:</strong>
                             <span [ngStyle]="{'color': (event.run_count < event.challenge) ? '#FF0000': '#17876b' }">
-                                {{ event.run_count }}
+                                {{ event.run_count | number : '1.2-2' }}
                             </span>
                             /
                             <span style="color: #17876b;">{{ event.challenge }}</span>
                             km
-                            (My Run: {{ myRunCount[event.id] }} km)
+                            (My Run: {{ myRunCount[event.id] | number : '1.2-2' }} km)
                         </p>
                     </div>
                     <div class="social">
