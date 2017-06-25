@@ -35,7 +35,7 @@ export class EventDetailComponent {
     uid = '';
     show = false;
     distanceSlots: any = [];
-    distanceMaxSlot: number = 3;
+    distanceMaxSlot: number = 10;
     distanceIndex: number = 0;
     runSpeed: any = 0;
     runPace: any = 0;
@@ -96,7 +96,7 @@ export class EventDetailComponent {
         that.getPosition();
         that.runIntv = setInterval(() => {
             getRunPosition()
-            }, 3000);
+            }, 1000);
         
         function getRunPosition(){
             if (navigator.geolocation) {
@@ -217,7 +217,7 @@ export class EventDetailComponent {
         clearInterval(that.runIntv);
         that.noRunIntv = setInterval(() => {
             that.getPosition()
-        }, 3000);
+        }, 1000);
     }
 
     ngOnDestroy() {
