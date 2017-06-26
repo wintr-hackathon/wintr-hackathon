@@ -122,6 +122,7 @@ export class EventDetailComponent {
 
             //Notification
             if(Math.floor(that.distance)-Math.floor(that.tempDistance) > 0){
+                try{
                 Notification.requestPermission().then(function(result){
                     if (result === 'denied') {
                         console.log('Permission wasn\'t granted. Allow a retry.');
@@ -135,6 +136,9 @@ export class EventDetailComponent {
                         } );
                     }
                 });
+                }catch(e){
+                    console.log(e);
+                }
             }
 
             that.tempDistance = that.distance;
@@ -186,6 +190,7 @@ export class EventDetailComponent {
         }
 
         //Notification
+        try{
         Notification.requestPermission().then(function(result){
             if (result === 'denied') {
                 console.log('Permission wasn\'t granted. Allow a retry.');
@@ -199,6 +204,9 @@ export class EventDetailComponent {
                 });
             }
         });
+        }catch(e){
+            console.log(e);
+        }
     }
 
     stopRun(){

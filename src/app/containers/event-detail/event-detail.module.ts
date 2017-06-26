@@ -16,7 +16,7 @@ import { AgmCoreModule } from '@agm/core';
         CommonModule,
         NgbModule,
         AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyDNlpBc9HiRzucFNeLsWIdGeGPO0L7glcg'
+            apiKey: 'AIzaSyCqW5Pdd5I-W7NZPLAbTex8wz8Wo7Km0Yg'
         })
     ],
     providers: [],
